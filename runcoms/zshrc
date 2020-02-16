@@ -11,3 +11,25 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# rbnev
+eval "$(rbenv init -)"
+
+# pyenv
+eval "$(pyenv init -)"
+
+# go
+export GOPATH=$(go env GOPATH)
+export PATH=$PATH:$GOPATH/bin
+
+# peco
+bindkey '^]' peco-src
+function peco-src() {
+  local src=$(ghq list --full-path | peco --query "$LBUFFER")
+  if [ -n "$src" ]; then
+    BUFFER="cd $src"
+    zle accept-line
+  fi
+  zle -R -c
+}
+zle -N peco-src
