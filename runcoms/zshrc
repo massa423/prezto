@@ -33,3 +33,9 @@ function peco-src() {
   zle -R -c
 }
 zle -N peco-src
+
+# Poetry?
+fpath+=~/.zfunc
+
+# nodenv
+eval "$(nodenv init -)"
