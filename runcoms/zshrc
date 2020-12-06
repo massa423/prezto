@@ -39,3 +39,6 @@ fpath+=~/.zfunc
 
 # nodenv
 eval "$(nodenv init -)"
+
+# direnv
+eval "$(direnv hook zsh)"
